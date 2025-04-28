@@ -1,0 +1,290 @@
+<!-- Inline Critical CSS for Fast Loading and Smooth Scrolling -->
+
+  /* Smooth scrolling */
+  html {
+  scroll-behavior: smooth;
+}
+
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f8f9fa;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Navbar */
+nav {
+  background-color: #fff;
+  border-bottom: 1px solid #e0e0e0;
+  padding: 10px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.navbar-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.nav-logo {
+  display: flex;
+  align-items: center;
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #333;
+}
+.nav-logo svg {
+  margin-right: 8px;
+}
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5em;
+  cursor: pointer;
+}
+.nav-menu {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.nav-item {
+  position: relative;
+  margin-left: 20px;
+  margin-bottom: 5px;
+}
+.nav-item a {
+  text-decoration: none;
+  color: #333;
+  padding: 8px 12px;
+  display: block;
+}
+.nav-item a:hover {
+  background-color: #e9ecef;
+  border-radius: 4px;
+}
+/* Dropdown Menu for Tools in Nav */
+.dropdown {
+  cursor: pointer;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 40px;
+  left: 0;
+  background-color: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  min-width: 180px;
+  z-index: 1000;
+}
+.dropdown-content a {
+  padding: 10px;
+  text-decoration: none;
+  color: #333;
+  display: block;
+}
+.dropdown-content a:hover {
+  background-color: #e9ecef;
+}
+
+/* Hero Section */
+.hero {
+  text-align: center;
+  padding: 60px 20px;
+  background-color: #e9ecef;
+}
+.hero h1 {
+  font-size: 2.5em;
+  margin-bottom: 10px;
+}
+.hero p {
+  font-size: 1.1em;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Section Styling */
+section {
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+section h2 {
+  font-size: 2em;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #e0e0e0;
+  padding-bottom: 10px;
+}
+section p {
+  margin-bottom: 15px;
+}
+
+/* Card Container (Tools Section) */
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.card {
+  background-color: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+.card a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  height: 100%;
+}
+.card-content {
+  padding: 15px;
+}
+.card-title {
+  color: rgb(100, 100, 100);
+  font-size: 1.25em;
+  margin-bottom: 10px;
+}
+.card-description {
+  font-size: 0.95em;
+  margin-bottom: 15px;
+}
+.card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+.card-tag {
+  background-color: #e9ecef;
+  padding: 5px 8px;
+  border-radius: 4px;
+  font-size: 0.8em;
+}
+
+/* Footer */
+footer {
+  background-color: #fff;
+  border-top: 1px solid #e0e0e0;
+  padding: 20px;
+  text-align: center;
+  margin-top: 40px;
+}
+footer a {
+  color: #333;
+  text-decoration: none;
+  margin: 0 10px;
+}
+footer a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive: Mobile Menu */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+  .nav-menu {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+  }
+  .nav-menu.active {
+    display: flex;
+  }
+  .nav-item {
+    margin-left: 0;
+    width: 100%;
+  }
+  /* Make dropdown menus full width on mobile */
+  .dropdown-content {
+    position: relative;
+    top: 0;
+    left: 0;
+    border: none;
+    box-shadow: none;
+  }
+}
+
+/* icons cards */
+/* Card Container (Tools Section) */
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+.card {
+  background-color: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+.card a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  height: 100%;
+}
+.card-content {
+  padding: 15px;
+}
+.card-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.card-icon {
+  margin-right: 10px;
+  color: #555;
+}
+.card-icon svg {
+  width: 24px;
+  height: 24px;
+  vertical-align: middle;
+}
+.card-title {
+  color: rgb(100, 100, 100);
+  font-size: 1.25em;
+  margin: 0;
+}
+.card-description {
+  font-size: 0.95em;
+  margin-bottom: 15px;
+}
+.card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+.card-tag {
+  background-color: #e9ecef;
+  padding: 5px 8px;
+  border-radius: 4px;
+  font-size: 0.8em;
+}

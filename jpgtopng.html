@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PixelToolbox - Image Converter (PNG ↔ JPG)</title>
+
+    <!-- SEO & Social Meta Tags -->
+    <meta
+      name="description"
+      content="PixelToolbox Image Converter: Convert your images between PNG and JPG formats quickly and easily. Enjoy a fast, free, and user-friendly online conversion tool."
+    />
+    <meta
+      name="keywords"
+      content="PixelToolbox, image converter, PNG to JPG, JPG to PNG, online tools, image conversion"
+    />
+    <meta name="author" content="Your Name or Company" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://example.com/image-converter" />
+    <meta
+      property="og:title"
+      content="PixelToolbox - Image Converter (PNG ↔ JPG)"
+    />
+    <meta
+      property="og:description"
+      content="Convert your images between PNG and JPG formats effortlessly with PixelToolbox."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://example.com/image-converter" />
+    <meta property="og:image" content="https://example.com/og-image.jpg" />
+
+    <!-- Inline CSS for Fast Loading and Consistent GUI -->
+    <style>
+      /* Smooth Scrolling */
+      html {
+        scroll-behavior: smooth;
+      }
+      /* Reset & Body */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f8f9fa;
+        color: #333;
+        line-height: 1.6;
+      }
+      /* Navigation Bar */
+      nav {
+        background-color: #fff;
+        border-bottom: 1px solid #e0e0e0;
+        padding: 10px 20px;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+      .navbar-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+      .nav-logo {
+        display: flex;
+        align-items: center;
+        font-size: 1.5em;
+        font-weight: bold;
+        color: #333;
+      }
+      .nav-logo svg {
+        margin-right: 8px;
+      }
+      .nav-menu {
+        list-style: none;
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+      .nav-item {
+        margin-left: 20px;
+      }
+      .nav-item a {
+        text-decoration: none;
+        color: #333;
+        padding: 8px 12px;
+        display: block;
+      }
+      .nav-item a:hover {
+        background-color: #e9ecef;
+        border-radius: 4px;
+      }
+      .menu-toggle {
+        display: none;
+        background: none;
+        border: none;
+        font-size: 1.5em;
+        cursor: pointer;
+      }
+      @media (max-width: 768px) {
+        .menu-toggle {
+          display: block;
+        }
+        .nav-menu {
+          display: none;
+          width: 100%;
+          flex-direction: column;
+        }
+        .nav-menu.active {
+          display: flex;
+        }
+        .nav-item {
+          margin-left: 0;
+          width: 100%;
+          text-align: center;
+        }
+      }
+      /* Hero Section */
+      .hero {
+        text-align: center;
+        padding: 40px 20px;
+        background-color: #e9ecef;
+        margin-bottom: 30px;
+      }
+      .hero h1 {
+        font-size: 2.5em;
+        margin-bottom: 10px;
+      }
+      .hero p {
+        font-size: 1.1em;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+      /* Main Container */
+      .container {
+        max-width: 1200px;
+        margin: 0 auto 40px auto;
+        padding: 20px;
+        background: #fff;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+      /* Conversion Controls */
+      .conversion-controls {
+        margin: 20px 0;
+        padding: 15px;
+        border: 1px solid #eee;
+        border-radius: 8px;
+        background: #fafafa;
+      }
+      .conversion-controls h3 {
+        margin-bottom: 10px;
+      }
+      select {
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+      /* Drag & Drop Area */
+      .drag-area {
+        border: 2px dashed #ccc;
+        padding: 20px;
+        text-align: center;
+        margin-bottom: 20px;
+        height: 150px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        border-radius: 8px;
+        background: #fdfdfd;
+      }
+      .drag-area.active {
+        border-color: #007bff;
+        background: #e7f0fd;
+      }
+      /* File List */
+      .file-list {
+        margin: 20px 0;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        max-height: 300px;
+        overflow-y: auto;
+      }
+      .file-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+        border-bottom: 1px solid #eee;
+      }
+      .file-item:last-child {
+        border-bottom: none;
+      }
+      .info {
+        display: flex;
+        align-items: center;
+      }
+      .thumbnail {
+        width: 60px;
+        height: 60px;
+        object-fit: cover;
+        margin-right: 15px;
+        border-radius: 4px;
+      }
+      .file-name {
+        font-weight: bold;
+      }
+      .size {
+        color: #666;
+        font-size: 0.9em;
+      }
+      .conversion-results {
+        display: flex;
+        align-items: center;
+      }
+      .percentage {
+        color: #007bff;
+        font-weight: bold;
+        margin-right: 10px;
+      }
+      /* Buttons */
+      button {
+        background: #007bff;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-right: 10px;
+      }
+      button:hover:not(:disabled) {
+        background: #0056b3;
+      }
+      button:disabled {
+        background: #cccccc;
+        cursor: not-allowed;
+      }
+      /* Progress Bar */
+      .progress-bar {
+        height: 5px;
+        width: 100%;
+        background-color: #e0e0e0;
+        border-radius: 2px;
+        margin-top: 5px;
+      }
+      .progress {
+        height: 100%;
+        background-color: #007bff;
+        border-radius: 2px;
+        width: 0%;
+        transition: width 0.3s ease;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation Bar -->
+
+    <!-- Hero Section -->
+    <div class="hero">
+      <h1>jpg to png</h1>
+      <p>Convert your images between PNG and JPG formats effortlessly.</p>
+    </div>
+
+    <!-- Main Content Container -->
+    <div class="container">
+      <!-- Conversion Type Controls -->
+      <div class="conversion-controls">
+        <h3>Conversion Type</h3>
+        <select id="conversionType">
+          <option value="png-to-jpg">PNG to JPG</option>
+          <option value="jpg-to-png">JPG to PNG</option>
+        </select>
+      </div>
+
+      <!-- Drag & Drop Area -->
+      <div class="drag-area" id="dropZone">
+        <div>Drop files here or click to select</div>
+        <input type="file" id="fileInput" multiple style="display: none" />
+      </div>
+
+      <!-- File List -->
+      <div class="file-list" id="fileList"></div>
+
+      <!-- Action Buttons -->
+      <div>
+        <button id="convertBtn" disabled>Convert</button>
+        <button id="downloadBtn" disabled>Download</button>
+      </div>
+    </div>
+
+    <!-- JSZip Library for creating ZIP files -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.7.1/jszip.min.js"></script>
+    <script>
+      // Elements
+      const dropZone = document.getElementById("dropZone");
+      const fileInput = document.getElementById("fileInput");
+      const fileListContainer = document.getElementById("fileList");
+      const conversionTypeSelect = document.getElementById("conversionType");
+      const convertBtn = document.getElementById("convertBtn");
+      const downloadBtn = document.getElementById("downloadBtn");
+
+      // Variables
+      let files = [];
+      let convertedFiles = [];
+
+      // Update file input accept attribute based on conversion type
+      function updateConversionSettings() {
+        const conversionType = conversionTypeSelect.value;
+        if (conversionType === "png-to-jpg") {
+          fileInput.accept = ".png";
+        } else if (conversionType === "jpg-to-png") {
+          fileInput.accept = ".jpg,.jpeg";
+        }
+        // Clear any previously selected files
+        files = [];
+        convertedFiles = [];
+        fileListContainer.innerHTML = "";
+        convertBtn.disabled = true;
+        downloadBtn.disabled = true;
+      }
+
+      // Initial setup
+      updateConversionSettings();
+
+      // Event Listeners
+      dropZone.addEventListener("click", () => fileInput.click());
+      dropZone.addEventListener("dragover", (e) => {
+        e.preventDefault();
+        dropZone.classList.add("active");
+      });
+      dropZone.addEventListener("dragleave", () =>
+        dropZone.classList.remove("active")
+      );
+      dropZone.addEventListener("drop", handleFiles);
+      fileInput.addEventListener("change", (e) => handleFiles(e));
+      conversionTypeSelect.addEventListener("change", updateConversionSettings);
+
+      convertBtn.addEventListener("click", convertImages);
+      downloadBtn.addEventListener("click", downloadAllImages);
+
+      // Handle File Selection
+      function handleFiles(e) {
+        e.preventDefault();
+        dropZone.classList.remove("active");
+        const selectedFiles = e.target.files || e.dataTransfer.files;
+        const conversionType = conversionTypeSelect.value;
+        files = Array.from(selectedFiles).filter((file) => {
+          if (conversionType === "png-to-jpg") {
+            return (
+              file.type === "image/png" ||
+              file.name.toLowerCase().endsWith(".png")
+            );
+          } else if (conversionType === "jpg-to-png") {
+            return (
+              file.type === "image/jpeg" ||
+              file.name.toLowerCase().endsWith(".jpg") ||
+              file.name.toLowerCase().endsWith(".jpeg")
+            );
+          }
+          return false;
+        });
+
+        if (files.length > 0) {
+          displayFiles();
+          convertBtn.disabled = false;
+        } else {
+          alert(
+            "Please select appropriate image files for the chosen conversion."
+          );
+        }
+      }
+
+      // Display File Information
+      function displayFiles() {
+        fileListContainer.innerHTML = "";
+        convertedFiles = [];
+
+        files.forEach((file, index) => {
+          const fileItem = document.createElement("div");
+          fileItem.className = "file-item";
+          fileItem.id = `file-${index}`;
+
+          // Create thumbnail
+          const reader = new FileReader();
+          reader.onload = function (e) {
+            thumbnail.src = e.target.result;
+          };
+          reader.readAsDataURL(file);
+
+          const info = document.createElement("div");
+          info.className = "info";
+
+          const thumbnail = document.createElement("img");
+          thumbnail.className = "thumbnail";
+          info.appendChild(thumbnail);
+
+          const details = document.createElement("div");
+
+          const fileName = document.createElement("div");
+          fileName.className = "file-name";
+          fileName.textContent = file.name;
+          details.appendChild(fileName);
+
+          const fileSize = document.createElement("div");
+          fileSize.className = "size";
+          fileSize.textContent = formatSize(file.size);
+          details.appendChild(fileSize);
+
+          info.appendChild(details);
+          fileItem.appendChild(info);
+
+          // Conversion results (initially empty)
+          const conversionResults = document.createElement("div");
+          conversionResults.className = "conversion-results";
+          conversionResults.id = `results-${index}`;
+          fileItem.appendChild(conversionResults);
+
+          // Progress bar
+          const progressBar = document.createElement("div");
+          progressBar.className = "progress-bar";
+          progressBar.innerHTML =
+            '<div class="progress" id="progress-' + index + '"></div>';
+          fileItem.appendChild(progressBar);
+
+          fileListContainer.appendChild(fileItem);
+        });
+      }
+
+      // Format file size
+      function formatSize(bytes) {
+        if (bytes < 1024) return bytes + " B";
+        else if (bytes < 1048576) return (bytes / 1024).toFixed(2) + " KB";
+        else return (bytes / 1048576).toFixed(2) + " MB";
+      }
+
+      // Convert Images
+      async function convertImages() {
+        if (files.length === 0) return;
+        convertBtn.disabled = true;
+        convertedFiles = [];
+        const conversionType = conversionTypeSelect.value;
+
+        for (let i = 0; i < files.length; i++) {
+          const file = files[i];
+          const progressElement = document.getElementById(`progress-${i}`);
+          const resultsElement = document.getElementById(`results-${i}`);
+
+          try {
+            // Update progress (start)
+            progressElement.style.width = "30%";
+
+            // Convert image with default quality for JPG
+            const converted = await convertImage(file, conversionType);
+            convertedFiles.push(converted);
+
+            // Calculate size difference
+            const savings =
+              100 - Math.round((converted.size / file.size) * 100);
+
+            // Update results
+            resultsElement.innerHTML = `
+              <span class="percentage">${savings}% size change</span>
+              <span class="size">${formatSize(file.size)} → ${formatSize(
+              converted.size
+            )}</span>
+            `;
+
+            // Complete progress
+            progressElement.style.width = "100%";
+          } catch (error) {
+            console.error("Error converting image:", error);
+            resultsElement.innerHTML =
+              '<span style="color: red;">Error: Could not convert</span>';
+            progressElement.style.width = "100%";
+            progressElement.style.backgroundColor = "#ff6b6b";
+          }
+        }
+
+        // Enable download button when all conversions are complete
+        downloadBtn.disabled = false;
+      }
+
+      // Convert a single image
+      function convertImage(file, conversionType) {
+        return new Promise((resolve, reject) => {
+          const reader = new FileReader();
+          reader.readAsDataURL(file);
+
+          reader.onload = function (event) {
+            const img = new Image();
+            img.src = event.target.result;
+
+            img.onload = function () {
+              const canvas = document.createElement("canvas");
+              canvas.width = img.width;
+              canvas.height = img.height;
+              const ctx = canvas.getContext("2d");
+
+              ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+              let dataURL;
+              let outputFormat;
+              let newFileName;
+              if (conversionType === "png-to-jpg") {
+                outputFormat = "image/jpeg";
+                dataURL = canvas.toDataURL(outputFormat, 0.8);
+                newFileName = file.name.replace(/\.[^.]+$/, ".jpg");
+              } else if (conversionType === "jpg-to-png") {
+                outputFormat = "image/png";
+                dataURL = canvas.toDataURL(outputFormat);
+                newFileName = file.name.replace(/\.[^.]+$/, ".png");
+              } else {
+                reject(new Error("Unsupported conversion type"));
+                return;
+              }
+
+              // Convert dataURL to Blob
+              const byteString = atob(dataURL.split(",")[1]);
+              const arrayBuffer = new ArrayBuffer(byteString.length);
+              const uint8Array = new Uint8Array(arrayBuffer);
+              for (let i = 0; i < byteString.length; i++) {
+                uint8Array[i] = byteString.charCodeAt(i);
+              }
+
+              const blob = new Blob([arrayBuffer], { type: outputFormat });
+              const convertedFile = new File([blob], newFileName, {
+                type: outputFormat,
+                lastModified: Date.now(),
+              });
+
+              resolve(convertedFile);
+            };
+
+            img.onerror = function () {
+              reject(new Error("Failed to load image"));
+            };
+          };
+
+          reader.onerror = function () {
+            reject(new Error("Failed to read file"));
+          };
+        });
+      }
+
+      // Download all converted images as a ZIP file
+      async function downloadAllImages() {
+        if (convertedFiles.length === 0) return;
+
+        const zip = new JSZip();
+        const folder = zip.folder("converted_images");
+
+        convertedFiles.forEach((file) => {
+          folder.file(file.name, file);
+        });
+
+        const content = await zip.generateAsync({ type: "blob" });
+        const link = document.createElement("a");
+        link.href = URL.createObjectURL(content);
+        link.download = "converted_images.zip";
+        link.click();
+      }
+
+      // Mobile menu toggle for consistency with PixelToolbox design
+      document
+        .getElementById("menuToggle")
+        .addEventListener("click", function () {
+          const navMenu = document.querySelector(".nav-menu");
+          navMenu.classList.toggle("active");
+          const hamburger = this.querySelector(".hamburger");
+          const closeIcon = this.querySelector(".close-icon");
+          if (navMenu.classList.contains("active")) {
+            hamburger.style.display = "none";
+            closeIcon.style.display = "inline";
+          } else {
+            hamburger.style.display = "inline";
+            closeIcon.style.display = "none";
+          }
+        });
+    </script>
+  </body>
+</html>

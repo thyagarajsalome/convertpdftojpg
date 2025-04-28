@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Convert PDF to JPG</title>
+    <!-- SEO & Social Meta Tags -->
+    <meta
+      name="description"
+      content="Convert your PDF files to high-quality JPG images effortlessly at convertpdftojpg.in. Enjoy fast, free, and user-friendly conversion with our online tool."
+    />
+    <meta
+      name="keywords"
+      content="convert pdf to jpg, pdf converter, online pdf conversion, free converter, convertpdftojpg.in"
+    />
+    <meta name="author" content="Your Name or Company" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://convertpdftojpg.in/" />
+    <meta
+      property="og:title"
+      content="Convert PDF to JPG - Fast & Free Online Converter | convertpdftojpg.in"
+    />
+    <meta
+      property="og:description"
+      content="Easily convert your PDF files into high-quality JPG images using convertpdftojpg.in – an efficient, free, and secure online converter."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://convertpdftojpg.in/" />
+    <meta
+      property="og:image"
+      content="https://convertpdftojpg.in/og-image.jpg"
+    />
+    <!-- Inline CSS for Fast Loading and Consistent GUI -->
+    <style>
+      /* Smooth Scrolling */
+      html {
+        scroll-behavior: smooth;
+      }
+      /* Reset & Body */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f8f9fa;
+        color: #333;
+        line-height: 1.6;
+      }
+      /* Hero Section */
+      .hero {
+        text-align: center;
+        padding: 40px 20px;
+        background-color: #e9ecef;
+        margin-bottom: 30px;
+      }
+      .hero h1 {
+        font-size: 2.5em;
+        margin-bottom: 10px;
+      }
+      .hero p {
+        font-size: 1.1em;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+      /* Info Sections */
+      .info-section {
+        max-width: 1200px;
+        margin: 0 auto 30px auto;
+        padding: 20px;
+        background: #fff;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+      .info-section h2 {
+        font-size: 2em;
+        margin-bottom: 10px;
+        text-align: center;
+      }
+      .info-section ul {
+        list-style-type: disc;
+        margin-left: 20px;
+      }
+      .info-section p {
+        margin-bottom: 15px;
+      }
+      /* Main Container */
+      .container {
+        max-width: 1200px;
+        margin: 0 auto 40px auto;
+        padding: 20px;
+        background: #fff;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+      /* Conversion Controls */
+      .conversion-controls {
+        margin: 20px 0;
+        padding: 15px;
+        border: 1px solid #eee;
+        border-radius: 8px;
+        background: #fafafa;
+      }
+      .conversion-controls h3 {
+        margin-bottom: 10px;
+      }
+      select {
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+      /* Drag & Drop Area */
+      .drag-area {
+        border: 2px dashed #ccc;
+        padding: 20px;
+        text-align: center;
+        margin-bottom: 20px;
+        height: 150px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        border-radius: 8px;
+        background: #fdfdfd;
+      }
+      .drag-area.active {
+        border-color: #007bff;
+        background: #e7f0fd;
+      }
+      /* File List */
+      .file-list {
+        margin: 20px 0;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        max-height: 300px;
+        overflow-y: auto;
+      }
+      .file-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+        border-bottom: 1px solid #eee;
+      }
+      .file-item:last-child {
+        border-bottom: none;
+      }
+      .info {
+        display: flex;
+        align-items: center;
+      }
+      .thumbnail {
+        width: 60px;
+        height: 60px;
+        object-fit: cover;
+        margin-right: 15px;
+        border-radius: 4px;
+      }
+      .file-name {
+        font-weight: bold;
+      }
+      .size {
+        color: #666;
+        font-size: 0.9em;
+      }
+      .conversion-results {
+        display: flex;
+        align-items: center;
+      }
+      .percentage {
+        color: #007bff;
+        font-weight: bold;
+        margin-right: 10px;
+      }
+      /* Buttons */
+      button {
+        background: #007bff;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-right: 10px;
+      }
+      button:hover:not(:disabled) {
+        background: #0056b3;
+      }
+      button:disabled {
+        background: #cccccc;
+        cursor: not-allowed;
+      }
+      /* Progress Bar */
+      .progress-bar {
+        height: 5px;
+        width: 100%;
+        background-color: #e0e0e0;
+        border-radius: 2px;
+        margin-top: 5px;
+      }
+      .progress {
+        height: 100%;
+        background-color: #007bff;
+        border-radius: 2px;
+        width: 0%;
+        transition: width 0.3s ease;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Hero Section -->
+    <div class="hero">
+      <h1>Converter PDF to JPG</h1>
+      <p>Convert your PDF files to JPG images (and vice versa) effortlessly.</p>
+    </div>
+    <!-- Main Content Container for the Converter -->
+    <div class="container">
+      <!-- Conversion Type Controls -->
+      <div class="conversion-controls">
+        <h3>Conversion Type</h3>
+        <select id="conversionType">
+          <option value="pdf-to-img">PDF to JPG</option>
+          <option value="img-to-pdf">JPG (Image) to PDF</option>
+        </select>
+      </div>
+
+      <!-- Drag & Drop Area -->
+      <div class="drag-area" id="dropZone">
+        <div>Drop files here or click to select</div>
+        <input type="file" id="fileInput" multiple style="display: none" />
+      </div>
+
+      <!-- File List -->
+      <div class="file-list" id="fileList"></div>
+
+      <!-- Action Buttons -->
+      <div>
+        <button id="convertBtn" disabled>Convert</button>
+        <button id="downloadBtn" disabled>Download</button>
+      </div>
+    </div>
+
+    <!-- Benefits Section -->
+    <div class="info-section">
+      <h2>Benefits of Using Our Converter</h2>
+      <ul>
+        <li>
+          <strong>Fast Conversion:</strong> Experience quick PDF to JPG
+          conversion without delays.
+        </li>
+        <li>
+          <strong>Free & Easy:</strong> Enjoy an entirely free service with a
+          user-friendly interface.
+        </li>
+        <li>
+          <strong>Secure & Private:</strong> Your files are processed in your
+          browser; no data is stored.
+        </li>
+        <li>
+          <strong>High-Quality Results:</strong> Get crisp, clear JPG images
+          suitable for all your needs.
+        </li>
+        <li>
+          <strong>No Installation Required:</strong> Use the tool directly from
+          your web browser.
+        </li>
+      </ul>
+    </div>
+
+    <!-- How to Use Section -->
+    <div class="info-section">
+      <h2>How to Use This Page</h2>
+      <p>Follow these simple steps to convert your files:</p>
+      <ul>
+        <li>
+          <strong>Select a Conversion Type:</strong> Use the drop-down menu to
+          choose between PDF to JPG or JPG to PDF.
+        </li>
+        <li>
+          <strong>Upload Your Files:</strong> Drag and drop your files into the
+          designated area or click to select them.
+        </li>
+        <li>
+          <strong>Convert:</strong> Click the "Convert Files" button. The tool
+          will process your file(s) and display progress.
+        </li>
+        <li>
+          <strong>Download:</strong> Once conversion is complete, download your
+          file(s) individually or as a ZIP archive.
+        </li>
+      </ul>
+    </div>
+
+    <!-- External Libraries -->
+    <!-- jsPDF for image to PDF conversion -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <!-- pdf.js for PDF to image conversion -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.14.305/pdf.min.js"></script>
+    <!-- JSZip for creating ZIP files -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.7.1/jszip.min.js"></script>
+
+    <!-- Main JavaScript -->
+    <script>
+      // Elements
+      const dropZone = document.getElementById("dropZone");
+      const fileInput = document.getElementById("fileInput");
+      const fileListContainer = document.getElementById("fileList");
+      const conversionTypeSelect = document.getElementById("conversionType");
+      const convertBtn = document.getElementById("convertBtn");
+      const downloadBtn = document.getElementById("downloadBtn");
+
+      // Variables
+      let files = [];
+      let convertedFiles = [];
+
+      // Update file input accept attribute based on conversion type
+      function updateConversionSettings() {
+        const conversionType = conversionTypeSelect.value;
+        if (conversionType === "img-to-pdf") {
+          // Accept common image files (JPG, JPEG, PNG)
+          fileInput.accept = ".jpg,.jpeg,.png";
+        } else if (conversionType === "pdf-to-img") {
+          fileInput.accept = ".pdf";
+        }
+        // Clear previously selected files
+        files = [];
+        convertedFiles = [];
+        fileListContainer.innerHTML = "";
+        convertBtn.disabled = true;
+        downloadBtn.disabled = true;
+      }
+
+      updateConversionSettings();
+
+      // Event Listeners for file selection and drag/drop
+      dropZone.addEventListener("click", () => fileInput.click());
+      dropZone.addEventListener("dragover", (e) => {
+        e.preventDefault();
+        dropZone.classList.add("active");
+      });
+      dropZone.addEventListener("dragleave", () =>
+        dropZone.classList.remove("active")
+      );
+      dropZone.addEventListener("drop", handleFiles);
+      fileInput.addEventListener("change", handleFiles);
+      conversionTypeSelect.addEventListener("change", updateConversionSettings);
+
+      convertBtn.addEventListener("click", convertFiles);
+      downloadBtn.addEventListener("click", downloadAllFiles);
+
+      // Handle file selection
+      function handleFiles(e) {
+        e.preventDefault();
+        dropZone.classList.remove("active");
+        const selectedFiles = e.target.files || e.dataTransfer.files;
+        const conversionType = conversionTypeSelect.value;
+        files = Array.from(selectedFiles).filter((file) => {
+          if (conversionType === "img-to-pdf") {
+            return file.type.startsWith("image/");
+          } else if (conversionType === "pdf-to-img") {
+            return (
+              file.type === "application/pdf" ||
+              file.name.toLowerCase().endsWith(".pdf")
+            );
+          }
+        });
+        if (files.length > 0) {
+          displayFiles();
+          convertBtn.disabled = false;
+        } else {
+          alert("Please select appropriate files for the chosen conversion.");
+        }
+      }
+
+      // Display file list and info
+      function displayFiles() {
+        fileListContainer.innerHTML = "";
+        convertedFiles = [];
+        files.forEach((file, index) => {
+          const fileItem = document.createElement("div");
+          fileItem.className = "file-item";
+          fileItem.id = `file-${index}`;
+
+          const info = document.createElement("div");
+          info.className = "info";
+
+          // Create thumbnail preview
+          const thumbnail = document.createElement("img");
+          thumbnail.className = "thumbnail";
+          if (conversionTypeSelect.value === "img-to-pdf") {
+            // For images, use FileReader to preview
+            const reader = new FileReader();
+            reader.onload = function (e) {
+              thumbnail.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+          } else {
+            // For PDFs show a default PDF icon (replace with your own if needed)
+            thumbnail.src = "https://via.placeholder.com/60?text=PDF";
+          }
+          info.appendChild(thumbnail);
+
+          const details = document.createElement("div");
+          const fileName = document.createElement("div");
+          fileName.className = "file-name";
+          fileName.textContent = file.name;
+          details.appendChild(fileName);
+          const fileSize = document.createElement("div");
+          fileSize.className = "size";
+          fileSize.textContent = formatSize(file.size);
+          details.appendChild(fileSize);
+          info.appendChild(details);
+          fileItem.appendChild(info);
+
+          // Conversion results container
+          const conversionResults = document.createElement("div");
+          conversionResults.className = "conversion-results";
+          conversionResults.id = `results-${index}`;
+          fileItem.appendChild(conversionResults);
+
+          // Progress bar
+          const progressBar = document.createElement("div");
+          progressBar.className = "progress-bar";
+          progressBar.innerHTML =
+            '<div class="progress" id="progress-' + index + '"></div>';
+          fileItem.appendChild(progressBar);
+
+          fileListContainer.appendChild(fileItem);
+        });
+      }
+
+      function formatSize(bytes) {
+        if (bytes < 1024) return bytes + " B";
+        else if (bytes < 1048576) return (bytes / 1024).toFixed(2) + " KB";
+        else return (bytes / 1048576).toFixed(2) + " MB";
+      }
+
+      // Main conversion handler for both conversion types
+      async function convertFiles() {
+        if (files.length === 0) return;
+        convertBtn.disabled = true;
+        convertedFiles = [];
+        const conversionType = conversionTypeSelect.value;
+
+        for (let i = 0; i < files.length; i++) {
+          const file = files[i];
+          const progressElement = document.getElementById(`progress-${i}`);
+          const resultsElement = document.getElementById(`results-${i}`);
+          try {
+            progressElement.style.width = "30%";
+            let converted;
+            if (conversionType === "img-to-pdf") {
+              converted = await convertImageToPDF(file);
+            } else if (conversionType === "pdf-to-img") {
+              converted = await convertPDFToJPG(file);
+            }
+            convertedFiles.push(converted);
+            // Display conversion completion information
+            resultsElement.innerHTML = `<span class="percentage">Done</span>
+              <span class="size">${formatSize(file.size)} → ${formatSize(
+              converted.size
+            )}</span>`;
+            progressElement.style.width = "100%";
+          } catch (error) {
+            console.error("Error converting file:", error);
+            resultsElement.innerHTML =
+              '<span style="color: red;">Error converting file</span>';
+            progressElement.style.width = "100%";
+            progressElement.style.backgroundColor = "#ff6b6b";
+          }
+        }
+        downloadBtn.disabled = false;
+      }
+
+      // Convert a JPG (or image) file to a single-page PDF using jsPDF
+      async function convertImageToPDF(file) {
+        return new Promise((resolve, reject) => {
+          const reader = new FileReader();
+          reader.readAsDataURL(file);
+          reader.onload = function (event) {
+            const img = new Image();
+            img.src = event.target.result;
+            img.onload = function () {
+              const { jsPDF } = window.jspdf;
+              const pdf = new jsPDF({
+                orientation: img.width > img.height ? "landscape" : "portrait",
+                unit: "pt",
+                format: [img.width, img.height],
+              });
+              pdf.addImage(img, "JPEG", 0, 0, img.width, img.height);
+              const pdfBlob = pdf.output("blob");
+              const newName = file.name.replace(/\.[^.]+$/, ".pdf");
+              const convertedFile = new File([pdfBlob], newName, {
+                type: "application/pdf",
+                lastModified: Date.now(),
+              });
+              resolve(convertedFile);
+            };
+            img.onerror = function () {
+              reject(new Error("Failed to load image"));
+            };
+          };
+          reader.onerror = function () {
+            reject(new Error("Failed to read file"));
+          };
+        });
+      }
+
+      // Convert a PDF file to a JPG by rendering the first page using pdf.js
+      async function convertPDFToJPG(file) {
+        return new Promise((resolve, reject) => {
+          const reader = new FileReader();
+          reader.readAsArrayBuffer(file);
+          reader.onload = async function (e) {
+            try {
+              const typedarray = new Uint8Array(e.target.result);
+              const pdf = await pdfjsLib.getDocument(typedarray).promise;
+              // For simplicity, only render the first page
+              const page = await pdf.getPage(1);
+              const viewport = page.getViewport({ scale: 1.5 });
+              const canvas = document.createElement("canvas");
+              canvas.width = viewport.width;
+              canvas.height = viewport.height;
+              const context = canvas.getContext("2d");
+              const renderContext = {
+                canvasContext: context,
+                viewport: viewport,
+              };
+              await page.render(renderContext).promise;
+              // Convert canvas to JPEG blob (quality set to 0.9)
+              canvas.toBlob(
+                (blob) => {
+                  if (!blob) {
+                    reject(new Error("Failed to convert canvas to image"));
+                    return;
+                  }
+                  const newName = file.name.replace(/\.[^.]+$/, ".jpg");
+                  const convertedFile = new File([blob], newName, {
+                    type: "image/jpeg",
+                    lastModified: Date.now(),
+                  });
+                  resolve(convertedFile);
+                },
+                "image/jpeg",
+                0.9
+              );
+            } catch (err) {
+              reject(err);
+            }
+          };
+          reader.onerror = function () {
+            reject(new Error("Failed to read PDF"));
+          };
+        });
+      }
+
+      // Download all converted files as a ZIP archive with the domain name in the file name.
+      async function downloadAllFiles() {
+        if (!convertedFiles.length) return;
+        const zip = new JSZip();
+        const folder = zip.folder("converted_files");
+        convertedFiles.forEach((file) => {
+          folder.file(file.name, file);
+        });
+        const content = await zip.generateAsync({ type: "blob" });
+        const link = document.createElement("a");
+        link.href = URL.createObjectURL(content);
+        // The downloaded file name now uses the domain name.
+        link.download = "convertpdftojpg.in_converted_files.zip";
+        link.click();
+      }
+    </script>
+  </body>
+</html>

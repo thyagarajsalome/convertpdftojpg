@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PixelToolbox - JPG Image Compressor</title>
+
+    <!-- SEO & Social Meta Tags -->
+    <meta
+      name="description"
+      content="PixelToolbox JPG Image Compressor - Compress your JPG images quickly without significant loss in quality using our user-friendly online tool."
+    />
+    <meta
+      name="keywords"
+      content="PixelToolbox, image compressor, JPG compressor, online image compression, JPG compression"
+    />
+    <meta name="author" content="Your Name or Company" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://example.com/jpg-compressor" />
+    <meta property="og:title" content="PixelToolbox - JPG Image Compressor" />
+    <meta
+      property="og:description"
+      content="Easily compress your JPG images with PixelToolbox without significant quality loss."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://example.com/jpg-compressor" />
+    <meta property="og:image" content="https://example.com/og-image.jpg" />
+
+    <!-- Inline CSS for Fast Loading and Consistent GUI -->
+    <style>
+      /* Smooth scrolling */
+      html {
+        scroll-behavior: smooth;
+      }
+      /* Reset & Body */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f8f9fa;
+        color: #333;
+        line-height: 1.6;
+      }
+      /* Navigation Bar */
+      nav {
+        background-color: #fff;
+        border-bottom: 1px solid #e0e0e0;
+        padding: 10px 20px;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+      .navbar-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+      .nav-logo {
+        display: flex;
+        align-items: center;
+        font-size: 1.5em;
+        font-weight: bold;
+        color: #333;
+      }
+      .nav-logo svg {
+        margin-right: 8px;
+      }
+      .nav-menu {
+        list-style: none;
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+      .nav-item {
+        margin-left: 20px;
+      }
+      .nav-item a {
+        text-decoration: none;
+        color: #333;
+        padding: 8px 12px;
+        display: block;
+      }
+      .nav-item a:hover {
+        background-color: #e9ecef;
+        border-radius: 4px;
+      }
+      .menu-toggle {
+        display: none;
+        background: none;
+        border: none;
+        font-size: 1.5em;
+        cursor: pointer;
+      }
+      @media (max-width: 768px) {
+        .menu-toggle {
+          display: block;
+        }
+        .nav-menu {
+          display: none;
+          width: 100%;
+          flex-direction: column;
+        }
+        .nav-menu.active {
+          display: flex;
+        }
+        .nav-item {
+          margin-left: 0;
+          width: 100%;
+          text-align: center;
+        }
+      }
+      /* Hero Section */
+      .hero {
+        text-align: center;
+        padding: 40px 20px;
+        background-color: #e9ecef;
+        margin-bottom: 30px;
+      }
+      .hero h1 {
+        font-size: 2.5em;
+        margin-bottom: 10px;
+      }
+      .hero p {
+        font-size: 1.1em;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+      /* Main Container */
+      .container {
+        max-width: 1200px;
+        margin: 0 auto 40px auto;
+        padding: 20px;
+        background: #fff;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+      /* Drag & Drop Area */
+      .drag-area {
+        border: 2px dashed #ccc;
+        padding: 20px;
+        text-align: center;
+        margin-bottom: 20px;
+        height: 150px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        border-radius: 8px;
+        background: #fdfdfd;
+        cursor: pointer;
+      }
+      .drag-area.active {
+        border-color: #007bff;
+        background: #e7f0fd;
+      }
+      /* Quality Controls */
+      .quality-controls {
+        margin: 20px 0;
+        padding: 15px;
+        border: 1px solid #eee;
+        border-radius: 8px;
+        background: #fafafa;
+      }
+      .quality-controls h3 {
+        margin-bottom: 10px;
+      }
+      label {
+        margin-right: 10px;
+      }
+      .quality-slider {
+        width: 100%;
+        margin: 10px 0;
+      }
+      /* File List */
+      .file-list {
+        margin: 20px 0;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        max-height: 300px;
+        overflow-y: auto;
+      }
+      .file-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+        border-bottom: 1px solid #eee;
+      }
+      .file-item:last-child {
+        border-bottom: none;
+      }
+      .info {
+        display: flex;
+        align-items: center;
+      }
+      .thumbnail {
+        width: 60px;
+        height: 60px;
+        object-fit: cover;
+        margin-right: 15px;
+        border-radius: 4px;
+      }
+      .file-name {
+        font-weight: bold;
+      }
+      .size {
+        color: #666;
+        font-size: 0.9em;
+      }
+      .compression-results {
+        display: flex;
+        align-items: center;
+      }
+      .percentage {
+        color: #007bff;
+        font-weight: bold;
+        margin-right: 10px;
+      }
+      /* Buttons */
+      button {
+        background: #007bff;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-right: 10px;
+      }
+      button:hover:not(:disabled) {
+        background: #0056b3;
+      }
+      button:disabled {
+        background: #cccccc;
+        cursor: not-allowed;
+      }
+      /* Progress Bar */
+      .progress-bar {
+        height: 5px;
+        width: 100%;
+        background-color: #e0e0e0;
+        border-radius: 2px;
+        margin-top: 5px;
+      }
+      .progress {
+        height: 100%;
+        background-color: #007bff;
+        border-radius: 2px;
+        width: 0%;
+        transition: width 0.3s ease;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation Bar -->
+
+    <!-- Hero Section -->
+    <div class="hero">
+      <h1>Image compressor</h1>
+      <p>Compress your images without significant loss in quality</p>
+    </div>
+
+    <!-- Main Content Container -->
+    <div class="container">
+      <!-- Drag & Drop Area -->
+      <div class="drag-area" id="dropZone">
+        <div>Drop JPG files here or click to select</div>
+        <input
+          type="file"
+          id="fileInput"
+          multiple
+          accept=".jpg,.jpeg"
+          style="display: none"
+        />
+      </div>
+
+      <!-- Quality Controls -->
+      <div class="quality-controls">
+        <h3>Compression Settings</h3>
+        <label for="quality">Quality: <span id="qualityValue">80</span>%</label>
+        <input
+          type="range"
+          id="quality"
+          class="quality-slider"
+          min="10"
+          max="100"
+          value="80"
+        />
+        <p>Lower quality = smaller file size (may affect image appearance)</p>
+      </div>
+
+      <!-- File List -->
+      <div class="file-list" id="fileList"></div>
+
+      <!-- Action Buttons -->
+      <div>
+        <button id="compressBtn" disabled>Compress Images</button>
+        <button id="downloadBtn" disabled>Download All</button>
+      </div>
+    </div>
+
+    <!-- JSZip Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.7.1/jszip.min.js"></script>
+    <script>
+      // Elements
+      const dropZone = document.getElementById("dropZone");
+      const fileInput = document.getElementById("fileInput");
+      const fileList = document.getElementById("fileList");
+      const qualitySlider = document.getElementById("quality");
+      const qualityValue = document.getElementById("qualityValue");
+      const compressBtn = document.getElementById("compressBtn");
+      const downloadBtn = document.getElementById("downloadBtn");
+
+      // Variables
+      let files = [];
+      let compressedFiles = [];
+      let quality = 80;
+
+      // Event Listeners
+      dropZone.addEventListener("click", () => fileInput.click());
+      dropZone.addEventListener("dragover", (e) => {
+        e.preventDefault();
+        dropZone.classList.add("active");
+      });
+      dropZone.addEventListener("dragleave", () =>
+        dropZone.classList.remove("active")
+      );
+      dropZone.addEventListener("drop", handleFiles);
+      fileInput.addEventListener("change", (e) => handleFiles(e));
+
+      qualitySlider.addEventListener("input", (e) => {
+        quality = e.target.value;
+        qualityValue.textContent = quality;
+      });
+
+      compressBtn.addEventListener("click", compressImages);
+      downloadBtn.addEventListener("click", downloadAllImages);
+
+      // Handle File Selection
+      function handleFiles(e) {
+        e.preventDefault();
+        dropZone.classList.remove("active");
+
+        const fileListObj = e.target.files || e.dataTransfer.files;
+        files = Array.from(fileListObj).filter(
+          (file) =>
+            file.type === "image/jpeg" ||
+            file.name.toLowerCase().endsWith(".jpg") ||
+            file.name.toLowerCase().endsWith(".jpeg")
+        );
+
+        if (files.length > 0) {
+          displayFiles();
+          compressBtn.disabled = false;
+        } else {
+          alert("Please select JPG images only");
+        }
+      }
+
+      // Display File Information
+      function displayFiles() {
+        fileList.innerHTML = "";
+        compressedFiles = [];
+
+        files.forEach((file, index) => {
+          const fileItem = document.createElement("div");
+          fileItem.className = "file-item";
+          fileItem.id = `file-${index}`;
+
+          // Create thumbnail
+          const reader = new FileReader();
+          reader.onload = function (e) {
+            thumbnail.src = e.target.result;
+          };
+          reader.readAsDataURL(file);
+
+          const info = document.createElement("div");
+          info.className = "info";
+
+          const thumbnail = document.createElement("img");
+          thumbnail.className = "thumbnail";
+          info.appendChild(thumbnail);
+
+          const details = document.createElement("div");
+
+          const fileName = document.createElement("div");
+          fileName.className = "file-name";
+          fileName.textContent = file.name;
+          details.appendChild(fileName);
+
+          const fileSize = document.createElement("div");
+          fileSize.className = "size";
+          fileSize.textContent = formatSize(file.size);
+          details.appendChild(fileSize);
+
+          info.appendChild(details);
+          fileItem.appendChild(info);
+
+          // Compression results (initially empty)
+          const compressionResults = document.createElement("div");
+          compressionResults.className = "compression-results";
+          compressionResults.id = `results-${index}`;
+          fileItem.appendChild(compressionResults);
+
+          // Progress bar
+          const progressBar = document.createElement("div");
+          progressBar.className = "progress-bar";
+          progressBar.innerHTML =
+            '<div class="progress" id="progress-' + index + '"></div>';
+          fileItem.appendChild(progressBar);
+
+          fileList.appendChild(fileItem);
+        });
+      }
+
+      // Format file size
+      function formatSize(bytes) {
+        if (bytes < 1024) return bytes + " B";
+        else if (bytes < 1048576) return (bytes / 1024).toFixed(2) + " KB";
+        else return (bytes / 1048576).toFixed(2) + " MB";
+      }
+
+      // Compress Images
+      async function compressImages() {
+        if (files.length === 0) return;
+
+        compressBtn.disabled = true;
+        compressedFiles = [];
+
+        for (let i = 0; i < files.length; i++) {
+          const file = files[i];
+          const progressElement = document.getElementById(`progress-${i}`);
+          const resultsElement = document.getElementById(`results-${i}`);
+
+          try {
+            // Update progress
+            progressElement.style.width = "50%";
+
+            // Compress image
+            const compressed = await compressImage(file, quality);
+            compressedFiles.push(compressed);
+
+            // Calculate compression ratio
+            const savings =
+              100 - Math.round((compressed.size / file.size) * 100);
+
+            // Update results
+            resultsElement.innerHTML = `
+              <span class="percentage">${savings}% smaller</span>
+              <span class="size">${formatSize(file.size)} → ${formatSize(
+              compressed.size
+            )}</span>
+            `;
+
+            // Complete progress
+            progressElement.style.width = "100%";
+          } catch (error) {
+            console.error("Error compressing image:", error);
+            resultsElement.innerHTML = `<span style="color: red;">Error: Could not compress</span>`;
+            progressElement.style.width = "100%";
+            progressElement.style.backgroundColor = "#ff6b6b";
+          }
+        }
+
+        // Enable download button when all compressions are complete
+        downloadBtn.disabled = false;
+      }
+
+      // Compress a single image
+      function compressImage(file, quality) {
+        return new Promise((resolve, reject) => {
+          const reader = new FileReader();
+          reader.readAsDataURL(file);
+
+          reader.onload = function (event) {
+            const img = new Image();
+            img.src = event.target.result;
+
+            img.onload = function () {
+              const canvas = document.createElement("canvas");
+              const ctx = canvas.getContext("2d");
+              canvas.width = img.width;
+              canvas.height = img.height;
+              ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+              const dataURL = canvas.toDataURL("image/jpeg", quality / 100);
+              const byteString = atob(dataURL.split(",")[1]);
+              const mimeType = dataURL
+                .split(",")[0]
+                .split(":")[1]
+                .split(";")[0];
+              const arrayBuffer = new ArrayBuffer(byteString.length);
+              const uint8Array = new Uint8Array(arrayBuffer);
+              for (let i = 0; i < byteString.length; i++) {
+                uint8Array[i] = byteString.charCodeAt(i);
+              }
+
+              const blob = new Blob([arrayBuffer], { type: mimeType });
+              const compressedFile = new File([blob], file.name, {
+                type: "image/jpeg",
+                lastModified: new Date().getTime(),
+              });
+              resolve(compressedFile);
+            };
+
+            img.onerror = function () {
+              reject(new Error("Failed to load image"));
+            };
+          };
+
+          reader.onerror = function () {
+            reject(new Error("Failed to read file"));
+          };
+        });
+      }
+
+      // Download all compressed images as a ZIP file
+      async function downloadAllImages() {
+        if (compressedFiles.length === 0) return;
+
+        const zip = new JSZip();
+        const folder = zip.folder("compressed_images");
+
+        compressedFiles.forEach((file, index) => {
+          folder.file(file.name, file);
+        });
+
+        const content = await zip.generateAsync({ type: "blob" });
+        const link = document.createElement("a");
+        link.href = URL.createObjectURL(content);
+        link.download = "compressed_images.zip";
+        link.click();
+      }
+
+      // Mobile menu toggle for consistency with PixelToolbox design
+      document
+        .getElementById("menuToggle")
+        .addEventListener("click", function () {
+          const navMenu = document.querySelector(".nav-menu");
+          navMenu.classList.toggle("active");
+          const hamburger = this.querySelector(".hamburger");
+          const closeIcon = this.querySelector(".close-icon");
+          if (navMenu.classList.contains("active")) {
+            hamburger.style.display = "none";
+            closeIcon.style.display = "inline";
+          } else {
+            hamburger.style.display = "inline";
+            closeIcon.style.display = "none";
+          }
+        });
+    </script>
+  </body>
+</html>
