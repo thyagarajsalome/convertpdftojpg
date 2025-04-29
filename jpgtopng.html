@@ -137,7 +137,7 @@
       /* Main Container */
       .container {
         max-width: 1200px;
-        margin: 0 auto 40px auto;
+        margin: 20px auto 40px auto;
         padding: 20px;
         background: #fff;
         border-radius: 8px;
@@ -255,10 +255,41 @@
         width: 0%;
         transition: width 0.3s ease;
       }
+      /* Info Sections */
+      .info-section {
+        margin: 40px auto;
+        padding: 20px;
+        background: #fafafa;
+        border: 1px solid #eee;
+        border-radius: 8px;
+        max-width: 800px;
+      }
+      .info-section h2 {
+        margin-bottom: 15px;
+        font-size: 1.8em;
+      }
+      .info-section p,
+      .info-section li {
+        font-size: 1em;
+        line-height: 1.5;
+      }
+      .info-section ul {
+        margin-left: 20px;
+        margin-top: 10px;
+        list-style-type: disc;
+      }
+      .info-section ol {
+        margin-left: 20px;
+        margin-top: 10px;
+      }
+      .info-section li + li {
+        margin-top: 8px;
+      }
     </style>
   </head>
   <body>
     <!-- Navigation Bar -->
+    <!-- Navigation content could be added here -->
 
     <!-- Hero Section -->
     <div class="hero">
@@ -291,6 +322,68 @@
         <button id="convertBtn" disabled>Convert</button>
         <button id="downloadBtn" disabled>Download</button>
       </div>
+    </div>
+
+    <!-- Benefits Section -->
+    <div class="container info-section" id="benefits">
+      <h2>Benefits</h2>
+      <ul>
+        <li>
+          <strong>User-Friendly Interface:</strong> The clean design and
+          intuitive layout make it easy for anyone to quickly convert images
+          without any hassle.
+        </li>
+        <li>
+          <strong>Fast & Efficient:</strong> Enjoy rapid conversion of your
+          images with minimal waiting times.
+        </li>
+        <li>
+          <strong>Free of Charge:</strong> Access high-quality conversion tools
+          online at no cost.
+        </li>
+        <li>
+          <strong>Flexible Conversion Options:</strong> Easily switch between
+          PNG to JPG and JPG to PNG conversions with a simple dropdown menu.
+        </li>
+        <li>
+          <strong>Drag & Drop Functionality:</strong> Upload files effortlessly
+          by dragging and dropping them into the designated area.
+        </li>
+        <li>
+          <strong>Batch Processing:</strong> Convert multiple images at once and
+          download them conveniently as a ZIP archive.
+        </li>
+      </ul>
+    </div>
+
+    <!-- How to Use Section -->
+    <div class="container info-section" id="how-to-use">
+      <h2>How to Use</h2>
+      <ol>
+        <li>
+          <strong>Select Conversion Type:</strong> Choose either "PNG to JPG" or
+          "JPG to PNG" from the dropdown menu at the top of the conversion
+          controls.
+        </li>
+        <li>
+          <strong>Upload Your Files:</strong> Drag and drop your images into the
+          designated drop area or click the area to browse and select files.
+        </li>
+        <li>
+          <strong>Review Your Files:</strong> Once uploaded, the file list will
+          display thumbnails, names, and sizes for easy review.
+        </li>
+        <li>
+          <strong>Convert Images:</strong> Click the "Convert" button to start
+          converting your images. Progress bars indicate the conversion status
+          for each file.
+        </li>
+        <li>
+          <strong>Download Converted Files:</strong> After conversion, click the
+          "Download" button to obtain all your converted images in a single ZIP
+          file.
+        </li>
+      </ol>
     </div>
 
     <!-- JSZip Library for creating ZIP files -->
