@@ -134,7 +134,7 @@
       /* Main Container */
       .container {
         max-width: 1200px;
-        margin: 0 auto 40px auto;
+        margin: 20px auto 40px auto;
         padding: 20px;
         background: #fff;
         border-radius: 8px;
@@ -255,14 +255,41 @@
         width: 0%;
         transition: width 0.3s ease;
       }
+      /* Info Sections */
+      .info-section {
+        margin: 40px auto;
+        padding: 20px;
+        background: #fafafa;
+        border: 1px solid #eee;
+        border-radius: 8px;
+        max-width: 800px;
+      }
+      .info-section h2 {
+        margin-bottom: 15px;
+        font-size: 1.8em;
+      }
+      .info-section p,
+      .info-section li {
+        font-size: 1em;
+        line-height: 1.5;
+      }
+      .info-section ul,
+      .info-section ol {
+        margin-left: 20px;
+        margin-top: 10px;
+      }
+      .info-section li + li {
+        margin-top: 8px;
+      }
     </style>
   </head>
   <body>
     <!-- Navigation Bar -->
+    <!-- Navigation content can be added here -->
 
     <!-- Hero Section -->
     <div class="hero">
-      <h1>Image compressor</h1>
+      <h1>Image Compressor</h1>
       <p>Compress your images without significant loss in quality</p>
     </div>
 
@@ -303,6 +330,57 @@
         <button id="compressBtn" disabled>Compress Images</button>
         <button id="downloadBtn" disabled>Download All</button>
       </div>
+    </div>
+
+    <!-- Benefits Section -->
+    <div class="container info-section" id="benefits">
+      <h2>Benefits</h2>
+      <ul>
+        <li>
+          <strong>Easy to Use:</strong> A simple drag & drop interface lets you
+          start compressing images quickly.
+        </li>
+        <li>
+          <strong>Effective Compression:</strong> Reduce file sizes
+          significantly without a noticeable loss of quality.
+        </li>
+        <li>
+          <strong>Fast Processing:</strong> Compress your images rapidly, saving
+          both time and bandwidth.
+        </li>
+        <li><strong>Free Access:</strong> Use the tool online at no cost.</li>
+        <li>
+          <strong>Batch Processing:</strong> Process multiple images at once and
+          download the compressed files as a ZIP archive.
+        </li>
+      </ul>
+    </div>
+
+    <!-- How to Use Section -->
+    <div class="container info-section" id="how-to-use">
+      <h2>How to Use</h2>
+      <ol>
+        <li>
+          <strong>Select Your Files:</strong> Drag and drop your JPG images into
+          the drop area or click to select them.
+        </li>
+        <li>
+          <strong>Adjust Quality:</strong> Use the slider to choose your desired
+          quality level for compression.
+        </li>
+        <li>
+          <strong>Review File List:</strong> Check the list to see the file
+          names and sizes before compression.
+        </li>
+        <li>
+          <strong>Compress Images:</strong> Click the "Compress Images" button
+          to start processing.
+        </li>
+        <li>
+          <strong>Download:</strong> Once compression is complete, use the
+          "Download All" button to save your compressed images in a ZIP file.
+        </li>
+      </ol>
     </div>
 
     <!-- JSZip Library -->
