@@ -81,10 +81,10 @@ tools.forEach((tool) => {
 // IndexNow URL submission function
 async function submitToIndexNow(urls) {
   const apiKey = "3758d3cdb7104d9ab130442dbce35de0"; // Your IndexNow API key
-  const keyLocation = `https://yourdomain.com/${apiKey}.txt`; // Where you hosted your key
+  const keyLocation = `https://convertpdftojpg.in/${apiKey}.txt`; // Where you hosted your key
 
   const payload = {
-    host: "yourdomain.com",
+    host: "https://convertpdftojpg.in/",
     key: apiKey,
     keyLocation: keyLocation,
     urlList: urls,
@@ -114,7 +114,7 @@ async function submitToIndexNow(urls) {
 // Example: submit all tool pages when site loads
 window.addEventListener("load", () => {
   const toolUrls = tools.map(
-    (tool) => `https://convertpdftojpg.in//${tool.href}`
+    (tool) => `https://convertpdftojpg.in/${tool.href}`
   );
   submitToIndexNow(toolUrls);
 });
