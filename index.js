@@ -79,42 +79,35 @@ tools.forEach((tool) => {
 });
 
 // IndexNow URL submission function
+// indexnow.js
+import fetch from "node-fetch";
+
+const apiKey = "3758d3cdb7104d9ab130442dbce35de0"; // Your IndexNow API key
+
 async function submitToIndexNow(urls) {
-  const apiKey = "3758d3cdb7104d9ab130442dbce35de0"; // Your IndexNow API key
-  const keyLocation = `https://convertpdftojpg.in/${apiKey}.txt`; // Where you hosted your key
-
-  const payload = {
-    host: "https://convertpdftojpg.in/",
-    key: apiKey,
-    keyLocation: keyLocation,
-    urlList: urls,
-  };
-
   try {
-    const response = await fetch("https://api.indexnow.org/IndexNow", {
+    const response = await fetch("https://api.indexnow.org/indexnow", {
       method: "POST",
-      headers: { "Content-Type": "application/json; charset=utf-8" },
-      body: JSON.stringify(payload),
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        host: "convertpdftojpg.in",
+        key: apiKey,
+        keyLocation: "https://convertpdftojpg.in/indexnow.txt",
+        urlList: urls,
+      }),
     });
 
-    if (response.ok) {
-      console.log("✅ URLs submitted to IndexNow:", urls);
-    } else {
-      console.error(
-        "❌ IndexNow submission failed:",
-        response.status,
-        await response.text()
-      );
-    }
-  } catch (error) {
-    console.error("⚠️ Error submitting to IndexNow:", error);
+    console.log("IndexNow Response:", await response.text());
+  } catch (err) {
+    console.error("IndexNow Error:", err);
   }
 }
 
-// Example: submit all tool pages when site loads
-window.addEventListener("load", () => {
-  const toolUrls = tools.map(
-    (tool) => `https://convertpdftojpg.in/${tool.href}`
-  );
-  submitToIndexNow(toolUrls);
-});
+// Example usage: call this after updating pages
+submitToIndexNow([
+  "https://convertpdftojpg.in/",
+  "https://convertpdftojpg.in/convertpdftojpg.html",
+  "https://convertpdftojpg.in/imageresizer.html",
+  "https://convertpdftojpg.in/jpgtopng.html",
+  "https://convertpdftojpg.in/imagecompressor.html",
+]);
