@@ -77,3 +77,44 @@ tools.forEach((tool) => {
     `;
   container.appendChild(card);
 });
+
+// IndexNow URL submission function
+async function submitToIndexNow(urls) {
+  const apiKey = "3758d3cdb7104d9ab130442dbce35de0"; // Your IndexNow API key
+  const keyLocation = `https://yourdomain.com/${apiKey}.txt`; // Where you hosted your key
+
+  const payload = {
+    host: "yourdomain.com",
+    key: apiKey,
+    keyLocation: keyLocation,
+    urlList: urls,
+  };
+
+  try {
+    const response = await fetch("https://api.indexnow.org/IndexNow", {
+      method: "POST",
+      headers: { "Content-Type": "application/json; charset=utf-8" },
+      body: JSON.stringify(payload),
+    });
+
+    if (response.ok) {
+      console.log("✅ URLs submitted to IndexNow:", urls);
+    } else {
+      console.error(
+        "❌ IndexNow submission failed:",
+        response.status,
+        await response.text()
+      );
+    }
+  } catch (error) {
+    console.error("⚠️ Error submitting to IndexNow:", error);
+  }
+}
+
+// Example: submit all tool pages when site loads
+window.addEventListener("load", () => {
+  const toolUrls = tools.map(
+    (tool) => `https://convertpdftojpg.in//${tool.href}`
+  );
+  submitToIndexNow(toolUrls);
+});
